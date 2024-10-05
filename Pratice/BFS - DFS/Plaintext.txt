@@ -1,0 +1,28 @@
+DFS(Graph, start):
+    Tạo một ngăn xếp rỗng (stack)
+    Đánh dấu đỉnh start là đã thăm
+    Đưa đỉnh start vào stack
+
+    While stack không rỗng:
+        Đỉnh v = stack.pop()  // Lấy đỉnh từ stack
+        Xử lý đỉnh v (in ra, thực hiện phép tính, ...)
+
+        For mỗi đỉnh u kề với v:
+            If đỉnh u chưa được thăm:
+                Đánh dấu u là đã thăm
+                Đưa đỉnh u vào stack
+
+
+BFS(Graph, start):
+    Tạo một hàng đợi rỗng (queue)
+    Đánh dấu đỉnh start là đã thăm
+    Đưa đỉnh start vào queue
+
+    While queue không rỗng:
+        Đỉnh v = queue.dequeue()  // Lấy đỉnh từ queue
+        Xử lý đỉnh v (in ra, thực hiện phép tính, ...)
+
+        For mỗi đỉnh u kề với v:
+            If đỉnh u chưa được thăm:
+                Đánh dấu u là đã thăm
+                Đưa đỉnh u vào queue

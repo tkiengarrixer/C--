@@ -11,6 +11,7 @@ std::vector<std::vector<int>> steps{
 bool isValid(int i, int j) {
     return i >= 0 && j >= 0 && i < n && j < m && board[i][j] == 0;
 }
+
 void backTrack(int x, int y, int step) {
     board[x][y] = step;
     if (step == n * m) {  // Neu di het cac o, in ra ket qua

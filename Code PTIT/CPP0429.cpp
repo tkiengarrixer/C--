@@ -1,57 +1,34 @@
+#include <algorithm>
 #include <cmath>
-#include <iomanip>
 #include <iostream>
-
-#define PI 3.141592653589793238
-
-struct point {
-    double x, y;
-};
-
-void input(point &a) { std::cin >> a.x >> a.y; }
-
-double distance(point a, point b) {
-    return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
-}
-
-bool isTriangle(point a, point b, point c) {
-    double AB = distance(a, b);
-    double BC = distance(b, c);
-    double AC = distance(a, c);
-    return AB + AC > BC && BC + AC > AB && AB + BC > AC;
-}
-
-double area(point a, point b, point c) {
-    double AB = distance(a, b);
-    double BC = distance(b, c);
-    double AC = distance(a, c);
-    double ABC = (AB + BC + AC) / 2.0;
-    return sqrt(ABC * (ABC - AB) * (ABC - BC) * (ABC - AC));
-}
-
-double radius(point a, point b, point c) {
-    double AB = distance(a, b);
-    double BC = distance(b, c);
-    double AC = distance(a, c);
-    double s = area(a, b, c);
-    return AB * AC * BC / (4.0 * s);
-}
+#include <vector>
 
 int main() {
-    int t;
-    std::cin >> t;
-    while (t--) {
-        point a, b, c;
-        input(a);
-        input(b);
-        input(c);
-        if (!isTriangle(a, b, c))
-            std::cout << "INVALID";
-        else {
-            double r = radius(a, b, c);
-            double area = PI * r * r;
-            std::cout << std::fixed << ::std::setprecision(3) << area;
-        }
-        std::cout << std::endl;
+    int n, k, b;
+    std::cin >> n >> k >> b;
+    std::vector<int> broken(100001, 0);
+    while (b--) {
+        int p;
+        std::cin >> p;
+        broken[p] = 1;
     }
+
+    int count = 0;
+
+    // Tìm số đèn cần sửa trong cửa sổ độ lớn k, bắt đầu vị trí 1
+    for (int i = 1; i <= k; ++i)
+        if (broken[i] == 1) ++count;
+
+    int result = count;
+
+    // Trượt cửa sổ đến cuối mảng và tìm số đèn tối thiểu cần sửa
+    for (int i = k + 1; i <= n; ++i) {
+        // Thêm vào cửa sổ
+        if (broken[i] == 1) ++count;
+        // Loại bỏ khỏi cửa sổ trong khi trượt
+        if (broken[i - k] == 1) --count;
+        result = std::min(result, count);
+    }
+
+    std::cout << result << std::endl;
 }

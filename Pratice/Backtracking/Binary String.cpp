@@ -3,7 +3,7 @@
 int x[100], n;
 void printResult() {
     for (int i = 1; i <= n; ++i) std::cout << x[i];
-    std::cout << std::endl;
+    std::cout << " ";
 }
 
 void backTrack(int i) {

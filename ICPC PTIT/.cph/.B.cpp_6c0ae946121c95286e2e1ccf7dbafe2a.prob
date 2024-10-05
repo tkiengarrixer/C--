@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"d:\\Clone Repository\\C++\\ICPC PTIT\\B.cpp","tests":[{"id":1726968009519,"input":"4\n6\n8\n43\n5\n","output":"6\n8\n86\n-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Clone Repository\\C++\\ICPC PTIT\\B.cpp","group":"local","local":true}
